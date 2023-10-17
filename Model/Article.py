@@ -3,10 +3,10 @@ import datetime
 
 class Article:
 
-    def __init__(self, id, submitter, author, title, comments, journalRef, doi, reportNumber, categories, license, abstract, versions, updateDate, authorsParsed):
+    def __init__(self, id, submitter, authors, title, comments, journalRef, doi, reportNumber, categories, license, abstract, versions, updateDate, authorsParsed):
         self.id = id
         self.submitter = submitter
-        self.author = author
+        self.authors = authors
         self.title = title
         self.comments = comments
         self.journalRef = journalRef

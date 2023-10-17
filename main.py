@@ -10,8 +10,8 @@ filePath = os.path.join(currentDirectory, 'Data', 'SampleDataMergeSystemCSV.csv'
 
 articleList = testController.addArticles(filePath)
 
-#db = DbArticle()
-#db.TestDatabase()
+db = DbArticle()
+db.TestDatabase()
 
-main = MainMenu()
-main.setup(articleList)
+#main = MainMenu()
+#main.setup(articleList)
