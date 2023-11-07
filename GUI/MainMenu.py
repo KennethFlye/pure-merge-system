@@ -18,42 +18,50 @@ class MainMenu:
 
         current_row = len(parent.grid_slaves())
 
+        # TODO if labeltexttype and type of labeltext not equal, highlight the other article
+        # or if labeltext empty highlight other article
+        # somehting along the lines of:
+        # is_label_nan = label_text is None  # or math.isnan(label_text)
+        # if is_label2_nan:
+        #     isPressed1 = tk.BooleanVar(value=True)
+
+        # The article field types
         labelType = tk.Label(parent, text=label_text_type)
         labelType.grid(row=current_row, column=0, sticky='w')
 
+        # First article field values
         label = tk.Label(parent, text=label_text, wraplength=1000)
         label.grid(row=current_row, column=1)
 
-        # TODO implement autochoose non-null values
-        # is_label_nan = label_text is None  # or math.isnan(label_text)
-        # is_label2_nan = label2_text is None
-
+        # First and second checkbutton
         # button1 = tk.Button(parent, text=button1_text)
         isPressed1 = tk.BooleanVar()
-        # if is_label2_nan:
-        #     isPressed1 = tk.BooleanVar(value=True)
         button1 = tk.Checkbutton(parent, variable=isPressed1)
         button1.grid(row=current_row, column=2)
 
         # button2 = tk.Button(parent, text=button2_text)
         isPressed2 = tk.BooleanVar()
-        # if is_label_nan:
-        #     isPressed2 = tk.BooleanVar(value=True)
-
         button2 = tk.Checkbutton(parent, variable=isPressed2)
         button2.grid(row=current_row, column=3)
+        button2.select()  # TODO selection methods does not seem to work when called before the mainloop()
 
+
+        # Second article field values
         label2 = tk.Label(parent, text=label2_text, wraplength=1000)
         label2.grid(row=current_row, column=4, sticky='w')
+
+        # if label2_text in (None, '', 'nan', 'NaN'):
+        #     isPressed2.set(, value=True)  # Select the Checkbutton if the label text is empty or NaN
 
     def setup(self, articleList):
         articleVariables = articleList[1].getListOfVariables()
 
         for i in range(14):
             counter = i * 2
-            article1 = articleList[counter]  # submitter column
-            article2 = articleList[counter + 1]  # author column
-            variable = articleVariables[i]
+            article1 = articleList[counter]  # first field values
+            article2 = articleList[counter + 1]  # second field values
+            variable = articleVariables[i]  # field value types
+            print(variable)
             self.create_row(self.root, f'{variable}:', f'{getattr(article1, variable)}',
                             f'{getattr(article2, variable)}')
 
@@ -74,7 +82,8 @@ class MainMenu:
         MenuFunc.accept_merge(self)
 
     def buttonCancel(self):
-        MenuFunc.cancel_merge()
+        self.root.destroy()
+        MenuFunc.cancel_merge(self)
 
     def checkTicks(self):
         MenuFunc.check_ticks()
