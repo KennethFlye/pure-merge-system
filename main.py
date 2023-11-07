@@ -13,5 +13,5 @@ articleList = testController.addArticles(filePath)
 db = DbArticle()
 db.TestDatabase()
 
-#main = MainMenu()
-#main.setup(articleList)
+main = MainMenu()
+main.setup(articleList)
