@@ -34,13 +34,16 @@ class MainMenu:
 
     def setup(self, articleList):
         articleVariables = articleList[1].getListOfVariables()
+        print(articleVariables)  # TODO fix breaks because "authors" column is "author"
 
         for i in range(14):
             counter = i*2
-            article1 = articleList[counter]
-            article2 = articleList[counter+1]
-            variable = articleVariables[i]
-            self.create_row(self.root, f'{variable}:',  f'{getattr(article1, variable) }', f'{getattr(article2, variable)}')
+            article1 = articleList[counter]  # id column
+            article2 = articleList[counter+1]  # submitter column
+            variable = articleVariables[i]  # authors column, but is somehow only "author"?
+            print(variable)
+            self.create_row(self.root, f'{variable}:',  f'{getattr(article1, variable) }',
+                            f'{getattr(article2, variable)}')
 
         self.create_merge_row(self.root)
 
