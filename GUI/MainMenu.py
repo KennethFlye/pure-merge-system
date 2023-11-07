@@ -1,5 +1,6 @@
 import tkinter as tk
 from Model.Article import Article
+from GUI.MainMenuFunc import MMFunc
 
 class MainMenu:
 
@@ -40,7 +41,6 @@ class MainMenu:
             article1 = articleList[counter]  # submitter column
             article2 = articleList[counter+1]  # author column
             variable = articleVariables[i]
-            print(variable)
             self.create_row(self.root, f'{variable}:',  f'{getattr(article1, variable) }',
                             f'{getattr(article2, variable)}')
 
