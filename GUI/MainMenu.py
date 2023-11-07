@@ -1,6 +1,10 @@
 import tkinter as tk
 from Model.Article import Article
-from GUI.MainMenuFunc import MMFunc
+from Controller.ArticleController import ArticleController
+from GUI.MainMenuFunc import MenuFunc
+import pandas as pd
+import math
+
 
 class MainMenu:
 
@@ -9,8 +13,8 @@ class MainMenu:
         self.root.title("Pure Merge")
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
-        #frame = tk.Frame(parent)
-        #frame.pack(fill=tk.X)
+        # frame = tk.Frame(parent)
+        # frame.pack(fill=tk.X)
 
         current_row = len(parent.grid_slaves())
 
@@ -20,13 +24,22 @@ class MainMenu:
         label = tk.Label(parent, text=label_text, wraplength=1000)
         label.grid(row=current_row, column=1)
 
-        #button1 = tk.Button(parent, text=button1_text)
+        # TODO implement autochoose non-null values
+        # is_label_nan = label_text is None  # or math.isnan(label_text)
+        # is_label2_nan = label2_text is None
+
+        # button1 = tk.Button(parent, text=button1_text)
         isPressed1 = tk.BooleanVar()
+        # if is_label2_nan:
+        #     isPressed1 = tk.BooleanVar(value=True)
         button1 = tk.Checkbutton(parent, variable=isPressed1)
         button1.grid(row=current_row, column=2)
 
-        #button2 = tk.Button(parent, text=button2_text)
+        # button2 = tk.Button(parent, text=button2_text)
         isPressed2 = tk.BooleanVar()
+        # if is_label_nan:
+        #     isPressed2 = tk.BooleanVar(value=True)
+
         button2 = tk.Checkbutton(parent, variable=isPressed2)
         button2.grid(row=current_row, column=3)
 
@@ -37,11 +50,11 @@ class MainMenu:
         articleVariables = articleList[1].getListOfVariables()
 
         for i in range(14):
-            counter = i*2
+            counter = i * 2
             article1 = articleList[counter]  # submitter column
-            article2 = articleList[counter+1]  # author column
+            article2 = articleList[counter + 1]  # author column
             variable = articleVariables[i]
-            self.create_row(self.root, f'{variable}:',  f'{getattr(article1, variable) }',
+            self.create_row(self.root, f'{variable}:', f'{getattr(article1, variable)}',
                             f'{getattr(article2, variable)}')
 
         self.create_merge_row(self.root)
@@ -58,7 +71,10 @@ class MainMenu:
         buttonCancel.grid(row=current_row, column=1, sticky='w')
 
     def buttonAccept(self):
-        pass
+        MenuFunc.accept_merge(self)
 
     def buttonCancel(self):
-        pass
+        MenuFunc.cancel_merge()
+
+    def checkTicks(self):
+        MenuFunc.check_ticks()

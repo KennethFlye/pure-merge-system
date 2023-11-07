@@ -25,13 +25,13 @@ class ArticleController():
                               row.reportNo, row.categories, row.license, row.abstract, row.versions, row.update_date,
                               row.authors_parsed)
             articleList.append(article)
-            print(f'{row.authors}')
-            print(f'{row.comments}')
-            print(f'Kategorier: {row.categories}')
-            print(f'Versioner: {row.versions}')
-            print(f'Authors parsed: {row.authors_parsed}')
-            print('____________________________________________________________________')
-            print(' ')
+            # print(f'{row.authors}')
+            # print(f'{row.comments}')
+            # print(f'Kategorier: {row.categories}')
+            # print(f'Versioner: {row.versions}')
+            # print(f'Authors parsed: {row.authors_parsed}')
+            # print('____________________________________________________________________')
+            # print(' ')
 
         return articleList
 
