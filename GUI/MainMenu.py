@@ -11,6 +11,8 @@ class MainMenu:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Pure Merge")
+        self.buttons = []
+        self.labels = []
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
         # frame = tk.Frame(parent)
@@ -32,26 +34,27 @@ class MainMenu:
         # First article field values
         label = tk.Label(parent, text=label_text, wraplength=1000)
         label.grid(row=current_row, column=1)
+        self.labels.append(label_text)  # TODO move to end of code to keep label1 and 2 together
 
         # First and second checkbutton
         # button1 = tk.Button(parent, text=button1_text)
         isPressed1 = tk.BooleanVar()
         button1 = tk.Checkbutton(parent, variable=isPressed1)
         button1.grid(row=current_row, column=2)
+        self.buttons.append(button1)
 
         # button2 = tk.Button(parent, text=button2_text)
         isPressed2 = tk.BooleanVar()
         button2 = tk.Checkbutton(parent, variable=isPressed2)
         button2.grid(row=current_row, column=3)
-        button2.select()  # TODO selection methods does not seem to work when called before the mainloop()
+        self.buttons.append(button2)  # TODO selection methods does not seem to work when called before the mainloop()
 
 
         # Second article field values
         label2 = tk.Label(parent, text=label2_text, wraplength=1000)
         label2.grid(row=current_row, column=4, sticky='w')
+        self.labels.append(label2_text)
 
-        # if label2_text in (None, '', 'nan', 'NaN'):
-        #     isPressed2.set(, value=True)  # Select the Checkbutton if the label text is empty or NaN
 
     def setup(self, articleList):
         articleVariables = articleList[1].getListOfVariables()
@@ -68,6 +71,8 @@ class MainMenu:
         self.create_merge_row(self.root)
 
         self.root.mainloop()
+
+        self.checkTicks()
 
     def create_merge_row(self, parent):
         current_row = len(parent.grid_slaves())
@@ -86,4 +91,8 @@ class MainMenu:
         MenuFunc.cancel_merge(self)
 
     def checkTicks(self):
-        MenuFunc.check_ticks()
+        for label in self.labels:
+            print(label)
+
+        for button in self.buttons:
+            print(button)  # TODO how to do something to buttons?
