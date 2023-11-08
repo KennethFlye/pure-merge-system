@@ -22,14 +22,12 @@ class ArticleController():
             comments = self.CommentsToList(row.comments)
 
             article = Article(row.id, row.submitter, authors, row.title, row.comments, row.journalRef, row.doi,
-                              row.reportNo, row.categories, row.license, row.abstract, row.versions, row.update_date,
-                              row.authors_parsed)
+                              row.reportNo, row.categories, row.license, row.abstract, row.versions, row.update_date)
             articleList.append(article)
             # print(f'{row.authors}')
             # print(f'{row.comments}')
             # print(f'Kategorier: {row.categories}')
             # print(f'Versioner: {row.versions}')
-            # print(f'Authors parsed: {row.authors_parsed}')
             # print('____________________________________________________________________')
             # print(' ')
 

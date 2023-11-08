@@ -3,7 +3,7 @@ import datetime
 
 class Article:
 
-    def __init__(self, id, submitter, authors, title, comments, journalRef, doi, reportNumber, categories, license, abstract, versions, updateDate, authorsParsed):
+    def __init__(self, id, submitter, authors, title, comments, journalRef, doi, reportNumber, categories, license, abstract, versions, updateDate):
         self.id = id
         self.submitter = submitter
         self.authors = authors
@@ -17,18 +17,16 @@ class Article:
         self.abstract = abstract
         self.versions = versions
         self.updateDate = updateDate
-        self.authorsParsed = authorsParsed
 
     def __str__(self):
         return (f'Id: {self.id}, submitter: {self.submitter}, authors: {self.authors}, title: {self.title}, '
                 f'comments: {self.comments}, journalRef: {self.journalRef}, doi: {self.doi}, '
                 f'reportNumber: {self.reportNumber}, categories: {self.categories}, license: {self.license}, '
-                f'abstract: {self.abstract}, versions: {self.versions}, updateDate: {self.updateDate}, '
-                f'authorsParsed: {self.authorsParsed}')
+                f'abstract: {self.abstract}, versions: {self.versions}, updateDate: {self.updateDate}')
 
     def getListOfVariables(self):
         variables = ['id', 'submitter', 'authors', 'title', 'comments', 'journalRef', 'doi', 'reportNumber',
-                     'categories', 'license', 'abstract', 'versions', 'updateDate', 'authorsParsed']
+                     'categories', 'license', 'abstract', 'versions', 'updateDate']
 
         return variables
 

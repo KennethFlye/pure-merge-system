@@ -22,7 +22,7 @@ class DbArticle:
             # Tjek om kategorierne findes i databasen, hvis ikke opret dem
             self.addCategories(article.categories)
             # Tjek om Authors Parsed findes i databasen, hvis ikke tilføj dem
-            self.addAuthorsParsed(article.authorsParsed)
+            # self.addAuthorsParsed(article.authorsParsed)
 
             # Tilføj artiklen
 
