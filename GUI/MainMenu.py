@@ -21,7 +21,7 @@ class MainMenu:
         current_row = len(parent.grid_slaves())
 
         # The article field types
-        labelType = tk.Label(parent, text=label_text_type)
+        labelType = tk.Label(parent, text=label_text_type, name='rowType')  # name prevents inclusion unless stated
         labelType.grid(row=current_row, column=0, sticky='w')
 
         # First article field values
@@ -68,9 +68,7 @@ class MainMenu:
 
         self.create_merge_row(self.root)
 
-        self.checkTicks(self.root)
-
-        self.root.wm_state('iconic')  # used to minimize on startup
+        # self.root.wm_state('iconic')  # used to minimize on startup
 
         self.root.mainloop()
 
@@ -83,25 +81,46 @@ class MainMenu:
         buttonCancel = tk.Button(parent, text='Cancel Merge', bg='red', command=self.buttonCancel)
         buttonCancel.grid(row=current_row, column=1, sticky='w')
 
-    def buttonAccept(self, parent):
-        acceptedbtns = []
-        for widget in reversed(parent.grid_slaves()):
-            if isinstance(widget, tk.Checkbutton):
-                acceptedbtns.append(widget,)
+    def isIterable(self, item):
+        try:
+            iter(item)
+            return True
+        except TypeError:
+            return False
+
+    def buttonAccept(self):
+        bools, strings = self.checkTicks()
+
+        # for testing
+        for item in bools:
+            print(f"{item}: {self.isIterable(item)}")
+
+        strings.pop(-3)  # hackerman
+        print(str(len(bools)) + ' < bool | string > ' + str(len(strings)))  # always includes last labeltype object
+        print(bools)
+        print(strings)
+        # TODO add check if columns lack ticks, fix formatting as mentioned line 91-92
+
+        # itererer gennem hver string i strings, comparer hver index i bools og strings, if nummer = 1: incl string
+        merged_article = [string for string, number in zip(strings, bools) if number == '1']
+
+        print(merged_article)  # returns empty list because authors is a list maybe
 
     def buttonCancel(self):
         self.root.destroy()
         MenuFunc.cancel_merge(self)
 
-    def checkTicks(self, parent):
-        for widget in reversed(parent.grid_slaves()):
-            if isinstance(widget, tk.Label):
-                text = widget.cget('text')  # TODO add param to label_text_type to sort out
-                print(text)
-            elif isinstance(widget, tk.Checkbutton):
-                # TODO add incrementation to reach each variable? maybe unnecessary with btn name
+    def checkTicks(self):
+        bin_val_list = []
+        text_list = []
+        for widget in reversed(self.root.grid_slaves()):
+            if isinstance(widget, tk.Checkbutton):
                 variable = widget.cget('variable')
                 value = self.root.getvar(variable)
-                print(f"Checkbutton Variable: {variable}, Value: {value}")
-            else:
-                print('(another irrelevant widget)')
+                bin_val_list.append(str(value))  # stringify to make iterable
+            elif isinstance(widget, tk.Label):
+                # could add check to see if text = column name and then get rid of it
+                text = widget.cget('text')
+                text_list.append(text)
+
+        return bin_val_list, text_list
