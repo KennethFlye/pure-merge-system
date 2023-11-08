@@ -3,7 +3,7 @@ from Model.Article import Article
 from Controller.ArticleController import ArticleController
 from GUI.MainMenuFunc import MenuFunc
 import pandas as pd
-import math
+import math  # TODO cannot do nan at this level
 
 
 class MainMenu:
@@ -34,45 +34,47 @@ class MainMenu:
         # First article field values
         label = tk.Label(parent, text=label_text, wraplength=1000)
         label.grid(row=current_row, column=1)
-        self.labels.append(label_text)  # TODO move to end of code to keep label1 and 2 together
+        self.labels.append(label)  # TODO move to end of code to keep label1 and 2 together
 
         # First and second checkbutton
         # button1 = tk.Button(parent, text=button1_text)
-        isPressed1 = tk.BooleanVar()
+        isPressed1 = tk.IntVar()
         button1 = tk.Checkbutton(parent, variable=isPressed1)
         button1.grid(row=current_row, column=2)
-        self.buttons.append(button1)
+        button1.select()
+        self.buttons.append(isPressed1)
 
         # button2 = tk.Button(parent, text=button2_text)
-        isPressed2 = tk.BooleanVar()
+        isPressed2 = tk.IntVar()
         button2 = tk.Checkbutton(parent, variable=isPressed2)
         button2.grid(row=current_row, column=3)
-        self.buttons.append(button2)  # TODO selection methods does not seem to work when called before the mainloop()
-
+        self.buttons.append(isPressed2)  # TODO selection methods does not seem to work when called before the mainloop()
 
         # Second article field values
         label2 = tk.Label(parent, text=label2_text, wraplength=1000)
         label2.grid(row=current_row, column=4, sticky='w')
-        self.labels.append(label2_text)
-
+        self.labels.append(label2)
 
     def setup(self, articleList):
-        articleVariables = articleList[1].getListOfVariables()
+        articleVariables = articleList[0].getListOfVariables()  # index number does not matter?
+        print(articleVariables)
 
         for i in range(14):
             counter = i * 2
             article1 = articleList[counter]  # first field values
             article2 = articleList[counter + 1]  # second field values
             variable = articleVariables[i]  # field value types
-            print(variable)
+            # print(variable)
             self.create_row(self.root, f'{variable}:', f'{getattr(article1, variable)}',
                             f'{getattr(article2, variable)}')
 
         self.create_merge_row(self.root)
 
-        self.root.mainloop()
+        self.checkTicks(self.root)
 
-        self.checkTicks()
+        self.root.wm_state('iconic')  # used to minimize on startup
+
+        self.root.mainloop()
 
     def create_merge_row(self, parent):
         current_row = len(parent.grid_slaves())
@@ -90,9 +92,32 @@ class MainMenu:
         self.root.destroy()
         MenuFunc.cancel_merge(self)
 
-    def checkTicks(self):
-        for label in self.labels:
-            print(label)
+    def checkTicks(self, parent):
+        for widget in reversed(parent.grid_slaves()):
+            if isinstance(widget, tk.Label):
+                text = widget.cget('text')  # TODO add param to label_text_type to sort out
+                print(text)
+            elif isinstance(widget, tk.Checkbutton):
+                # btnvar = widget.cget('variable')
+                # print(btnvar + 'has val' + str(btnval))
+                variable = widget.cget('variable')
+                bool_var = self.root.getvar(variable)
+                # value = bool_var.get()
+                print(f"Checkbutton Variable: {bool_var}, Value: {'na'}")
+            else:
+                print('no further relevant widgets')
 
-        for button in self.buttons:
-            print(button)  # TODO how to do something to buttons?
+# class MainMenu:
+#     # Existing code...
+#
+#     def check_widgets(self):
+#         current_row_widgets = self.root.grid_slaves()
+#         for widget in current_row_widgets:
+#             if isinstance(widget, tk.Label):
+#                 label_text = widget.cget('text')
+#                 print(f"Label Text: {label_text}")
+#             elif isinstance(widget, tk.Checkbutton):
+#                 variable = widget.cget('variable')
+#                 print(f"Checkbutton Variable: {variable}")
+#
+#     # Other methods...
