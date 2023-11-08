@@ -1,20 +1,20 @@
 import json
 import urllib.request
 
-status_url = "http://127.0.0.1:5000/api/status"
-evaluate_url = "http://127.0.0.1:5000/api/check"
+status_url_ml = "http://127.0.0.1:5000/api/status"
+evaluate_url_ml = "http://127.0.0.1:5000/api/check"
 
 
-def getstatus():
-    response = urllib.request.urlopen(status_url)
+def getstatus_ml():
+    response = urllib.request.urlopen(status_url_ml)
     data = response.read()
     response_dict = json.loads(data)
 
     return response_dict
 
 
-def evaluate(title):
-    url = evaluate_url
+def evaluate_ml(title):
+    url = evaluate_url_ml
     postdata = {"title": title}
     postdata = json.dumps(postdata).encode('utf-8')
 

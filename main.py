@@ -4,8 +4,8 @@ from ApiAccess import ApiAccess
 
 # testController = ArticleController()
 
-status = ApiAccess.getstatus()
-check = ApiAccess.evaluate("Role")
+status = ApiAccess.getstatus_ml()
+check = ApiAccess.evaluate_ml("Role")
 print(status)
 print(check)
 
