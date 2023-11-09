@@ -1,7 +1,6 @@
 import tkinter as tk
 from Model.Article import Article
 from Controller.ArticleController import ArticleController
-from GUI.MainMenuFunc import MenuFunc
 import pandas as pd
 import math  # TODO cannot do nan at this level
 
@@ -109,7 +108,6 @@ class MainMenu:
 
     def buttonCancel(self):
         self.root.destroy()
-        MenuFunc.cancel_merge(self)
 
     def checkTicks(self):
         bin_val_list = []
