@@ -21,7 +21,7 @@ class MainMenu:
         current_row = len(parent.grid_slaves())
 
         # The article field types
-        labelType = tk.Label(parent, text=label_text_type, name='rowType')  # name prevents inclusion unless stated
+        labelType = tk.Label(parent, text=label_text_type)  # name prevents inclusion unless stated
         labelType.grid(row=current_row, column=0, sticky='w')
 
         # First article field values
@@ -91,20 +91,21 @@ class MainMenu:
     def buttonAccept(self):
         bools, strings = self.checkTicks()
 
-        # for testing
-        for item in bools:
-            print(f"{item}: {self.isIterable(item)}")
+        # FOR CHECKING ITERABLE
+        # for item in bools:
+        #     print(f"{item}: {self.isIterable(item)}")
 
-        strings.pop(-3)  # hackerman
-        print(str(len(bools)) + ' < bool | string > ' + str(len(strings)))  # always includes last labeltype object
-        print(bools)
-        print(strings)
-        # TODO add check if columns lack ticks, fix formatting as mentioned line 91-92
+        # simple checkbox lacking checks checker
+        result = self.has_consecutive_ones_or_zeros(bools)
+        if result:
+            print("NOTICE! The list has three consecutive 1s or 0s.")
 
+        # OLD - moved to articlecontroller
         # itererer gennem hver string i strings, comparer hver index i bools og strings, if nummer = 1: incl string
-        merged_article = [string for string, number in zip(strings, bools) if number == '1']
+        # merged_article = [string for string, number in zip(strings, bools) if number == '1']
+        # print(merged_article)  # returns empty list because authors is a list maybe
 
-        print(merged_article)  # returns empty list because authors is a list maybe
+        ArticleController.MergedArticles(self, bools, strings)
 
     def buttonCancel(self):
         self.root.destroy()
@@ -113,6 +114,7 @@ class MainMenu:
     def checkTicks(self):
         bin_val_list = []
         text_list = []
+        text_types_list = Article.getListOfVariables(self)
         for widget in reversed(self.root.grid_slaves()):
             if isinstance(widget, tk.Checkbutton):
                 variable = widget.cget('variable')
@@ -121,6 +123,20 @@ class MainMenu:
             elif isinstance(widget, tk.Label):
                 # could add check to see if text = column name and then get rid of it
                 text = widget.cget('text')
-                text_list.append(text)
+                # Add check to prevent collection text_types TODO improve
+                if text[:-1] not in text_types_list:
+                    text_list.append(text)
+
+        # visual confirmation
+        print(bin_val_list)
+        print(text_list)
+        print(str(len(bin_val_list)) + ' = bool | string = ' + str(len(text_list)))
 
         return bin_val_list, text_list
+
+    def has_consecutive_ones_or_zeros(self, list):
+        joined_list = ''.join(list)  # Convert the list to a single string for pattern matching
+        if '111' in joined_list or '000' in joined_list:
+            print(joined_list)
+            return True
+        return False
