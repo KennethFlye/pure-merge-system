@@ -1,11 +1,12 @@
 import pandas as pd
 import os
+from ApiAccess import DBApiAccess
 from Model.Article import Article
 
 
 class ArticleController():
     def __init__(self):
-        pass
+        api_access = DBApiAccess
 
     def addArticles(self, filePath):
         data = pd.read_csv(filePath, delimiter=";", encoding="ISO-8859-1", on_bad_lines='skip')
@@ -55,3 +56,7 @@ class ArticleController():
         comb_list_right = [val for pair in zip(text_list_right, bool_list_right) for val in pair]
         print(f'full list: {comb_list_left}')
         print(f'full list: {comb_list_right}')
+
+    def save_articles_to_db(self):
+        # TODO send article lists to db
+        pass
