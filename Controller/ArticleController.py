@@ -54,8 +54,8 @@ class ArticleController():
         # combine the list for extraction
         comb_list_left = [val for pair in zip(text_list_left, bool_list_left) for val in pair]
         comb_list_right = [val for pair in zip(text_list_right, bool_list_right) for val in pair]
-        print(f'full list: {comb_list_left}')
-        print(f'full list: {comb_list_right}')
+        print(f'left list: {comb_list_left}')
+        print(f'right list: {comb_list_right}')
 
     def save_articles_to_db(self):
         # TODO send article lists to db
