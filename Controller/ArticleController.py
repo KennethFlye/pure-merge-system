@@ -1,12 +1,12 @@
 import pandas as pd
 import os
-from ApiAccess import DBApiAccess
+from ApiAccess.DBApiAccess import DBApiAccess
 from Model.Article import Article
 
 
-class ArticleController():
+class ArticleController:
     def __init__(self):
-        api_access = DBApiAccess
+        self.api_access = DBApiAccess()
 
     def addArticles(self, filePath):
         data = pd.read_csv(filePath, delimiter=";", encoding="ISO-8859-1", on_bad_lines='skip')
@@ -42,7 +42,7 @@ class ArticleController():
     def CommentsToList(self, comments):
         pass
 
-    def MergedArticles(self, preflist, textlist):
+    def merge_articles(self, preflist, textlist):
         # split lists for api to handle
         bool_list_left = preflist[::2]
         bool_list_right = preflist[1::2]
@@ -51,12 +51,25 @@ class ArticleController():
         # print(f'left list: {text_list_left}')
         # print(f'right list: {text_list_right}')
 
+        # add a groupnumber
+        grp_no = self.api_access.get_group_number()
+
         # combine the list for extraction
         comb_list_left = [val for pair in zip(text_list_left, bool_list_left) for val in pair]
         comb_list_right = [val for pair in zip(text_list_right, bool_list_right) for val in pair]
+
+        # add group number to list
+        # comb_list_left.append(grp_no)
+        # comb_list_right.append(grp_no)
+        print(grp_no)
+
         print(f'left list: {comb_list_left}')
         print(f'right list: {comb_list_right}')
 
-    def save_articles_to_db(self):
+        # return success or not?
+        self.save_articles_to_db(comb_list_left, comb_list_right)
+
+    def save_articles_to_db(self, listLeft, listRight):
         # TODO send article lists to db
+        # error handling
         pass

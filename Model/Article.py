@@ -24,7 +24,8 @@ class Article:
                 f'reportNumber: {self.reportNumber}, categories: {self.categories}, license: {self.license}, '
                 f'abstract: {self.abstract}, versions: {self.versions}, updateDate: {self.updateDate}')
 
-    def getListOfVariables(self):
+    @staticmethod
+    def getListOfVariables():
         variables = ['id', 'submitter', 'authors', 'title', 'comments', 'journalRef', 'doi', 'reportNumber',
                      'categories', 'license', 'abstract', 'versions', 'updateDate']
 

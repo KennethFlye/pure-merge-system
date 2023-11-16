@@ -12,6 +12,7 @@ class MainMenu:
         self.root.title("Pure Merge")
         self.buttons_val = []
         self.labels = []
+        self.article_controller = ArticleController()
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
         # frame = tk.Frame(parent)
@@ -104,7 +105,7 @@ class MainMenu:
         # merged_article = [string for string, number in zip(strings, bools) if number == '1']
         # print(merged_article)  # returns empty list because authors is a list maybe
 
-        ArticleController.MergedArticles(self, bools, strings)
+        self.article_controller.merge_articles(bools, strings)
 
     def buttonCancel(self):
         self.root.destroy()
@@ -112,7 +113,7 @@ class MainMenu:
     def checkTicks(self):
         bin_val_list = []
         text_list = []
-        text_types_list = Article.getListOfVariables(self)
+        text_types_list = Article.getListOfVariables()
         for widget in reversed(self.root.grid_slaves()):
             if isinstance(widget, tk.Checkbutton):
                 variable = widget.cget('variable')

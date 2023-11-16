@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="filename change, added extra api file">
+    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="print upd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiAccess/DBApiAccess.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApiAccess/DBApiAccess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/ArticleController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ArticleController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/MainMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Article.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Article.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +142,8 @@
       <workItem from="1699431772706" duration="15822000" />
       <workItem from="1699517693303" duration="7776000" />
       <workItem from="1699532817934" duration="78000" />
-      <workItem from="1699863148808" duration="459000" />
+      <workItem from="1699863148808" duration="1130000" />
+      <workItem from="1700127352698" duration="5236000" />
     </task>
     <task id="LOCAL-00001" summary="setup">
       <option name="closed" value="true" />
@@ -252,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699532648284</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="print upd">
+      <option name="closed" value="true" />
+      <created>1699863635498</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699863635499</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,11 +284,12 @@
     <MESSAGE value="end of day - able to merge article" />
     <MESSAGE value="restored files and calls, throws error still" />
     <MESSAGE value="filename change, added extra api file" />
-    <option name="LAST_COMMIT_MESSAGE" value="filename change, added extra api file" />
+    <MESSAGE value="print upd" />
+    <option name="LAST_COMMIT_MESSAGE" value="print upd" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pure_merge_system$ApiAccess.coverage" NAME="ApiAccess Coverage Results" MODIFIED="1699529107416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ApiAccess" />
-    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1699863522270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1700133264856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mergePure$main.coverage" NAME="main Coverage Results" MODIFIED="1696936292085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pure_merge_system$MainMenuFunc.coverage" NAME="MainMenuFunc Coverage Results" MODIFIED="1699438463810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
   </component>

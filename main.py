@@ -1,5 +1,5 @@
 from Controller.ArticleController import ArticleController
-from ApiAccess import MLApiAccess
+from ApiAccess.DBApiAccess import DBApiAccess
 import os
 from GUI.MainMenu import MainMenu
 from Database.DbArticle import DbArticle
@@ -10,9 +10,9 @@ currentDirectory = os.path.dirname(__file__)
 filePath = os.path.join(currentDirectory, 'Data', 'SampleDataMergeSystemCSV.csv')
 
 # Start ML API before running
-# status = ApiAccess.getstatus_ml()
-# check = ApiAccess.evaluate_ml("Role")
-# print(status)
+articles = DBApiAccess.get_articles_from_db()
+# check = DBApiAccess.evaluate_db("Role")
+print('List of articles: ' + str(articles))
 # print(check)
 
 articleList = testController.addArticles(filePath)
