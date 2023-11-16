@@ -23,8 +23,9 @@ class ArticleController:
             authors = self.AuthorsToList(row.authors)
             comments = self.CommentsToList(row.comments)
 
-            article = Article(row.id, row.submitter, authors, row.title, row.comments, row.journalRef, row.doi,
-                              row.reportNo, row.categories, row.license, row.abstract, row.versions, row.update_date)
+            article = Article(row.id, row.submitter, authors, row.title, row.comments, row.journal_ref, row.doi,
+                              row.report_number, row.categories, row.license, row.abstract, row.versions,
+                              row.update_date)
             articleList.append(article)
             # print(f'{row.authors}')
             # print(f'{row.comments}')
