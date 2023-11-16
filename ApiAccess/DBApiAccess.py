@@ -23,3 +23,12 @@ class DBApiAccess:
         response_dict = json.loads(data)
 
         return response_dict
+
+    def post_to_db(self, list_left, list_right):
+        # TODO setup try-catch
+        # TODO should be set up more like evaluate_ml
+        response = urllib.request.urlopen(status_url_db)
+        data = response.read()
+        response_dict = json.loads(data)
+
+        return response_dict

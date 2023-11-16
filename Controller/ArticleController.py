@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 import os
 from ApiAccess.DBApiAccess import DBApiAccess
 from Model.Article import Article
@@ -48,28 +49,52 @@ class ArticleController:
         bool_list_right = preflist[1::2]
         text_list_left = textlist[::2]
         text_list_right = textlist[1::2]
-        # print(f'left list: {text_list_left}')
-        # print(f'right list: {text_list_right}')
 
-        # add a groupnumber
-        grp_no = self.api_access.get_group_number()
-
-        # combine the list for extraction
+        # combine the lists for saving
         comb_list_left = [val for pair in zip(text_list_left, bool_list_left) for val in pair]
         comb_list_right = [val for pair in zip(text_list_right, bool_list_right) for val in pair]
 
-        # add group number to list
-        # comb_list_left.append(grp_no)
-        # comb_list_right.append(grp_no)
-        print(grp_no)
+        # make lists comparable with db
+        comb_list_left = self.type_refactoring(comb_list_left)
+        comb_list_right = self.type_refactoring(comb_list_right)
 
-        print(f'left list: {comb_list_left}')
-        print(f'right list: {comb_list_right}')
+        # add group number to list
+        grp_no = self.find_group_number()
+        comb_list_left.append(grp_no)
+        comb_list_right.append(grp_no)
+
+        print(f'# Left list: {comb_list_left}')
+        print(f'# Right list: {comb_list_right}')
 
         # return success or not?
         self.save_articles_to_db(comb_list_left, comb_list_right)
 
     def save_articles_to_db(self, listLeft, listRight):
-        # TODO send article lists to db
-        # error handling
-        pass
+        # TODO call to_json
+        result = self.api_access.post_to_db(listLeft, listRight)
+        if result is not None:
+            print('yippie its saved')
+        else:
+            print('oh no saving failed')
+            # TODO return error to gui
+
+    def find_group_number(self):
+        # find the latest group number
+        grp_no_json = self.api_access.get_group_number()
+        print('# Highest group number: ' + str(grp_no_json))
+
+        # extract number
+        grp_no_list = [int(s) for s in re.findall(r'\d+', str(grp_no_json))]  # extract as list of integers
+
+        return grp_no_list[0]
+
+    def type_refactoring(self, art_list):
+        # start at index 1, then skip to the second index after that, and so on
+        for i in range(1, len(art_list), 2):
+            # convert to int, then to bool
+            bool_val = bool(int(art_list[i]))
+            # replace stringified integer with bool
+            art_list[i] = bool_val
+
+        print('# Type refactored list: ' + str(art_list))
+        return art_list

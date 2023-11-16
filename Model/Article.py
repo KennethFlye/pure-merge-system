@@ -31,3 +31,32 @@ class Article:
 
         return variables
 
+    def to_json(self):
+        return {
+            "id": self.id,
+            "submitter": self.submitter,
+            "submitter_is_preferred": self.submitter_is_preferred,
+            "authors": self.authors,
+            "authors_is_preferred": self.authors_is_preferred,
+            "title": self.title,
+            "title_is_preferred": self.title_is_preferred,
+            "comments": self.comments,
+            "comments_is_preferred": self.comments_is_preferred,
+            "journal_ref": self.journal_ref,
+            "journal_ref_is_preferred": self.journal_ref_is_preferred,
+            "doi": self.doi,
+            "doi_is_preferred": self.doi_is_preferred,
+            "report_number": self.report_number,
+            "report_number_is_preferred": self.report_number_is_preferred,
+            "categories": self.categories,
+            "categories_is_preferred": self.categories_is_preferred,
+            "license": self.license,
+            "license_is_preferred": self.license_is_preferred,
+            "abstract": self.abstract,
+            "abstract_is_preferred": self.abstract_is_preferred,
+            "versions": self.versions,
+            "versions_is_preferred": self.versions_is_preferred,
+            "update_date": str(self.update_date),  # NOTE, DATE IS NOW A STRING, VERY BIG NOTE HERE PLS DON'T FORGET
+            "update_date_is_preferred": self.update_date_is_preferred,
+            "group": self.group
+        }
