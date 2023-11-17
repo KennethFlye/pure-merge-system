@@ -45,32 +45,32 @@ class Article:
 
         return variables
 
-    def to_json(self):
+    def to_json(a_list):
         return {
-            "id": self.id,
-            "submitter": self.submitter,
-            "submitter_is_preferred": self.submitter_is_preferred,
-            "authors": self.authors,
-            "authors_is_preferred": self.authors_is_preferred,
-            "title": self.title,
-            "title_is_preferred": self.title_is_preferred,
-            "comments": self.comments,
-            "comments_is_preferred": self.comments_is_preferred,
-            "journal_ref": self.journal_ref,
-            "journal_ref_is_preferred": self.journal_ref_is_preferred,
-            "doi": self.doi,
-            "doi_is_preferred": self.doi_is_preferred,
-            "report_number": self.report_number,
-            "report_number_is_preferred": self.report_number_is_preferred,
-            "categories": self.categories,
-            "categories_is_preferred": self.categories_is_preferred,
-            "license": self.license,
-            "license_is_preferred": self.license_is_preferred,
-            "abstract": self.abstract,
-            "abstract_is_preferred": self.abstract_is_preferred,
-            "versions": self.versions,
-            "versions_is_preferred": self.versions_is_preferred,
-            "update_date": str(self.update_date),  # NOTE, DATE IS NOW A STRING, VERY BIG NOTE HERE PLS DON'T FORGET
-            "update_date_is_preferred": self.update_date_is_preferred,
-            "group": self.group
+            "id": a_list[0],  # id and id preference is skipped
+            "submitter": a_list[2],
+            "submitter_is_preferred": a_list[3],
+            "authors": a_list[4],
+            "authors_is_preferred": a_list[5],
+            "title": a_list[6],
+            "title_is_preferred": a_list[7],
+            "comments": a_list[8],
+            "comments_is_preferred": a_list[9],
+            "journal_ref": a_list[10],
+            "journal_ref_is_preferred": a_list[11],
+            "doi": a_list[12],
+            "doi_is_preferred": a_list[13],
+            "report_number": a_list[14],
+            "report_number_is_preferred": a_list[15],
+            "categories": a_list[16],
+            "categories_is_preferred": a_list[17],
+            "license": a_list[18],
+            "license_is_preferred": a_list[19],
+            "abstract": a_list[20],
+            "abstract_is_preferred": a_list[21],
+            "versions": a_list[22],
+            "versions_is_preferred": a_list[23],
+            "update_date": a_list[24],  # string?
+            "update_date_is_preferred": a_list[25],
+            "group": a_list[26]
         }

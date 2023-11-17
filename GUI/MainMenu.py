@@ -127,14 +127,15 @@ class MainMenu:
                     text_list.append(text)
 
         # visual confirmation
-        print(bin_val_list)
-        print(text_list)
-        print(str(len(bin_val_list)) + ' = bool | string = ' + str(len(text_list)))
+        print('# Bool list: ' + str(bin_val_list))
+        print('# Text list: ' + str(text_list))
+        print(f'# Length of lists: bool = {str(len(bin_val_list))}, string = {str(len(text_list))}')
 
         return bin_val_list, text_list
 
     def has_consecutive_ones_or_zeros(self, list):
         joined_list = ''.join(list)  # Convert the list to a single string for pattern matching
+        # patterns only take half of illegal choices into account, should be extended with something like '01001'
         if '111' in joined_list or '000' in joined_list:
             print(joined_list)
             return True

@@ -8,6 +8,7 @@ from Model.Article import Article
 class ArticleController:
     def __init__(self):
         self.api_access = DBApiAccess()
+        self.article = Article
 
     def addArticles(self, filePath):
         data = pd.read_csv(filePath, delimiter=";", encoding="ISO-8859-1", on_bad_lines='skip')
@@ -23,8 +24,8 @@ class ArticleController:
             authors = self.AuthorsToList(row.authors)
             comments = self.CommentsToList(row.comments)
 
-            article = Article(row.id, row.submitter, authors, row.title, row.comments, row.journal_ref, row.doi,
-                              row.report_number, row.categories, row.license, row.abstract, row.versions,
+            article = Article(row.id, row.submitter, authors, row.title, row.comments, row.journalRef, row.doi,
+                              row.reportNo, row.categories, row.license, row.abstract, row.versions,
                               row.update_date)
             articleList.append(article)
             # print(f'{row.authors}')
@@ -70,10 +71,15 @@ class ArticleController:
         # return success or not?
         self.save_articles_to_db(comb_list_left, comb_list_right)
 
-    def save_articles_to_db(self, listLeft, listRight):
-        # TODO call to_json
-        result = self.api_access.post_to_db(listLeft, listRight)
-        if result is not None:
+    def save_articles_to_db(self, list_left, list_right):
+        json_res1 = self.article.to_json(list_left)
+        json_res2 = self.article.to_json(list_right)
+        print(f'# Article list to json: {json_res1}')
+
+        result1 = self.api_access.post_to_db(json_res1)
+        result2 = self.api_access.post_to_db(json_res2)
+
+        if result1 and result2 is not None:
             print('yippie its saved')
         else:
             print('oh no saving failed')
@@ -93,9 +99,9 @@ class ArticleController:
         # start at index 1, then skip to the second index after that, and so on
         for i in range(1, len(art_list), 2):
             # convert to int, then to bool
-            bool_val = bool(int(art_list[i]))
-            # replace stringified integer with bool
-            art_list[i] = bool_val
+            int_val = int(art_list[i])
+            # replace stringified integer with int - was changed to bool but that breaks the json serializer
+            art_list[i] = int_val
 
         print('# Type refactored list: ' + str(art_list))
         return art_list
