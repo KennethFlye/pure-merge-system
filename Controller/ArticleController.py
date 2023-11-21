@@ -75,20 +75,26 @@ class ArticleController:
         json_res1 = self.article.to_json(list_left)
         json_res2 = self.article.to_json(list_right)
         print(f'# Article list to json: {json_res1}')
+        print(json_res1)
+        self.api_access.post_to_db(json_res1)
+        # print(result1)
+        self.api_access.post_to_db(json_res2)
+        # print(result2)
 
-        result1 = self.api_access.post_to_db(json_res1)
-        result2 = self.api_access.post_to_db(json_res2)
-
-        if result1 and result2 is not None:
-            print('yippie its saved')
-        else:
-            print('oh no saving failed')
-            # TODO return error to gui
+        # try:
+        #
+        # except Exception:
+        #     print('weep woop')
+        #     pass
+        # if result is not None:
+        #     print('yippie its saved')
+        # else:
+        #     print('oh no saving failed')
 
     def find_group_number(self):
         # find the latest group number
         grp_no_json = self.api_access.get_group_number()
-        print('# Highest group number: ' + str(grp_no_json))
+        print('# Next group number: ' + str(grp_no_json))
 
         # extract number
         grp_no_list = [int(s) for s in re.findall(r'\d+', str(grp_no_json))]  # extract as list of integers
@@ -102,6 +108,13 @@ class ArticleController:
             int_val = int(art_list[i])
             # replace stringified integer with int - was changed to bool but that breaks the json serializer
             art_list[i] = int_val
+
+        # TODO refactor this, not a good solution
+        print('# Method type_refactoring, hardcoded: ')
+        art_list[4] = [art_list[4]]  # art_list[4] contributor
+        art_list[8] = [art_list[8]]  # art_list[8] comments
+        art_list[16] = [art_list[16]]  # art_list[16] category
+        print(type(art_list[4]), type(art_list[16]))
 
         print('# Type refactored list: ' + str(art_list))
         return art_list

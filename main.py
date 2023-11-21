@@ -10,10 +10,10 @@ currentDirectory = os.path.dirname(__file__)
 filePath = os.path.join(currentDirectory, 'Data', 'SampleDataMergeSystemCSV.csv')
 
 # Start ML API before running
+print('# List of articles from db: ')
 articles = DBApiAccess.get_articles_from_db()
-# check = DBApiAccess.evaluate_db("Role")
-print('# List of articles from db: ' + str(articles))
-# print(check)
+for a in articles:
+    print('# ' + str(a))
 
 articleList = testController.addArticles(filePath)
 

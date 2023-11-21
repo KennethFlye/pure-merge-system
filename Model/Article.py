@@ -47,7 +47,7 @@ class Article:
 
     def to_json(a_list):
         return {
-            "id": a_list[0],  # id and id preference is skipped
+            # "id": a_list[0],  # id and id preference is skipped
             "submitter": a_list[2],
             "submitter_is_preferred": a_list[3],
             "authors": a_list[4],

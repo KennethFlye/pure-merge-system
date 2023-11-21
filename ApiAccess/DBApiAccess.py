@@ -24,18 +24,19 @@ class DBApiAccess:
 
         return response_dict
 
-    def post_to_db(self, art_list):
-        # TODO setup try-catch
-        # TODO should be set up more like evaluate_ml
+    def post_to_db(self, article_dict):
         url = articles_list_url
 
-        post_data = art_list
+        post_data = article_dict
         post_data = json.dumps([post_data]).encode('utf-8')
+        print(post_data)
 
         req = urllib.request.Request(url, data=post_data, headers={'Content-Type': 'application/json'})
         response = urllib.request.urlopen(req)
 
         data = response.read().decode('utf-8')
-        response_dict = json.loads(data)
-        print(response_dict)
+        if data:
+            response_dict = json.loads(data)
+            print(response_dict)
+
         # return response_dict
