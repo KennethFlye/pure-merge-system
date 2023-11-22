@@ -91,19 +91,10 @@ class MainMenu:
     def buttonAccept(self):
         bools, strings = self.checkTicks()
 
-        # FOR CHECKING ITERABLE
-        # for item in bools:
-        #     print(f"{item}: {self.isIterable(item)}")
-
         # simple checkbox lacking checks checker
         result = self.has_consecutive_ones_or_zeros(bools)
         if result:
             print("NOTICE! The list has three consecutive 1s or 0s.")
-
-        # OLD - moved to articlecontroller
-        # itererer gennem hver string i strings, comparer hver index i bools og strings, if nummer = 1: incl string
-        # merged_article = [string for string, number in zip(strings, bools) if number == '1']
-        # print(merged_article)  # returns empty list because authors is a list maybe
 
         self.article_controller.merge_articles(bools, strings)
 

@@ -36,7 +36,7 @@ class DBApiAccess:
 
         data = response.read().decode('utf-8')
         if data:
-            response_dict = json.loads(data)
-            print(response_dict)
+            # response_dict = json.loads(data)
+            print(data)
 
         # return response_dict
