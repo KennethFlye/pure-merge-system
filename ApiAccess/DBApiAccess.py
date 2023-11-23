@@ -17,7 +17,8 @@ class DBApiAccess:
 
         return response_dict
 
-    def get_group_number(self):
+    @staticmethod
+    def get_group_number():
         response = urllib.request.urlopen(group_number_url)
         data = response.read()
         response_dict = json.loads(data)
