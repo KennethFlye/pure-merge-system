@@ -26,17 +26,17 @@ class DBApiAccess:
 
     def post_to_db(self, article_dict):
         url = articles_list_url
+        try:
+            post_data = article_dict
+            post_data = json.dumps([post_data]).encode('utf-8')
 
-        post_data = article_dict
-        post_data = json.dumps([post_data]).encode('utf-8')
-        print(post_data)
+            req = urllib.request.Request(url, data=post_data, headers={'Content-Type': 'application/json'})
+            response = urllib.request.urlopen(req)
 
-        req = urllib.request.Request(url, data=post_data, headers={'Content-Type': 'application/json'})
-        response = urllib.request.urlopen(req)
-
-        data = response.read().decode('utf-8')
-        if data:
-            # response_dict = json.loads(data)
+            data = response.read().decode('utf-8')
             print(data)
 
-        # return response_dict
+            return response.status  # should always return 201 Ok
+
+        except:
+            return None

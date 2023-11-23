@@ -1,3 +1,5 @@
+import urllib.request
+
 import pandas as pd
 import re
 import os
@@ -68,28 +70,27 @@ class ArticleController:
         print(f'# Left list: {comb_list_left}')
         print(f'# Right list: {comb_list_right}')
 
-        # return success or not?
-        self.save_articles_to_db(comb_list_left, comb_list_right)
+        success_msg = self.save_articles_to_db(comb_list_left, comb_list_right)
+        return success_msg
 
     def save_articles_to_db(self, list_left, list_right):
+        success_msg = 'no msg set'
+
         json_res1 = self.article.to_json(list_left)
         json_res2 = self.article.to_json(list_right)
-        print(f'# Article list to json: {json_res1}')
-        print(json_res1)
-        self.api_access.post_to_db(json_res1)
-        # print(result1)
-        self.api_access.post_to_db(json_res2)
-        # print(result2)
+        print(f'# Article list to json: {json_res1}\n{json_res2}')
 
-        # try:
-        #
-        # except Exception:
-        #     print('weep woop')
-        #     pass
-        # if result is not None:
-        #     print('yippie its saved')
-        # else:
-        #     print('oh no saving failed')
+        first_resp = self.api_access.post_to_db(json_res1)
+        second_resp = self.api_access.post_to_db(json_res2)
+
+        if first_resp and second_resp == 201:
+            success_msg = 'articles were saved'
+        elif first_resp or second_resp == 500:
+            success_msg = 'internal server error'
+        else:
+            success_msg = 'an error occurred'
+
+        return success_msg
 
     def find_group_number(self):
         # find the latest group number
@@ -110,7 +111,7 @@ class ArticleController:
             art_list[i] = int_val
 
         # TODO refactor this, not a good solution
-        print('# Method type_refactoring, hardcoded: ')
+        print('# Method: type_refactoring, hardcoded: ')
         art_list[4] = [art_list[4]]  # art_list[4] contributor
         art_list[8] = [art_list[8]]  # art_list[8] comments
         art_list[16] = [art_list[16]]  # art_list[16] category
