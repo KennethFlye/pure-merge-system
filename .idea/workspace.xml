@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="fixed post to db, deleted some comments">
+    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="some save status stuff, shown article fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApiAccess/DBApiAccess.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApiAccess/DBApiAccess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/ArticleController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ArticleController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/MainMenu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,6 +128,7 @@
         <item itemvalue="Python.MainMenuFunc" />
         <item itemvalue="Python.MainMenuFunc" />
         <item itemvalue="Python.MainMenuFunc" />
+        <item itemvalue="Python.MainMenuFunc" />
       </list>
     </recent_temporary>
   </component>
@@ -156,6 +156,8 @@
       <workItem from="1700466011389" duration="4308000" />
       <workItem from="1700554869337" duration="15263000" />
       <workItem from="1700641182722" duration="2897000" />
+      <workItem from="1700727786368" duration="190000" />
+      <workItem from="1700743275573" duration="2042000" />
     </task>
     <task id="LOCAL-00001" summary="setup">
       <option name="closed" value="true" />
@@ -309,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700571653478</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="some save status stuff, shown article fix">
+      <option name="closed" value="true" />
+      <created>1700727883740</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700727883740</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,11 +343,12 @@
     <MESSAGE value="some changed formatting of the lists, appended grp number" />
     <MESSAGE value="eod - error in getting column name from csv file" />
     <MESSAGE value="eod - more work on post to db, now saving one article before throwing error" />
-    <option name="LAST_COMMIT_MESSAGE" value="eod - more work on post to db, now saving one article before throwing error" />
+    <MESSAGE value="some save status stuff, shown article fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="some save status stuff, shown article fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pure_merge_system$ApiAccess.coverage" NAME="ApiAccess Coverage Results" MODIFIED="1699529107416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ApiAccess" />
-    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1700656992165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1700744961218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mergePure$main.coverage" NAME="main Coverage Results" MODIFIED="1696936292085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pure_merge_system$MainMenuFunc.coverage" NAME="MainMenuFunc Coverage Results" MODIFIED="1699438463810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
   </component>

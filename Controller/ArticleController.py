@@ -98,7 +98,11 @@ class ArticleController:
         print('# Next group number: ' + str(grp_no_json))
 
         # extract number
-        grp_no_list = [int(s) for s in re.findall(r'\d+', str(grp_no_json))]  # extract as list of integers
+        grp_no_list = []
+        if grp_no_json != 0:
+            grp_no_list += [int(s) for s in re.findall(r'\d+', str(grp_no_json))]  # extract as list of integers
+        else:
+            grp_no_list += [0]
 
         return grp_no_list[0]
 

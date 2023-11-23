@@ -1,3 +1,5 @@
+import re
+
 from Controller.ArticleController import ArticleController
 from ApiAccess.DBApiAccess import DBApiAccess
 import os
@@ -20,12 +22,13 @@ articleList = art_controller.addArticles(filePath)
 # db = DbArticle()
 # db.TestDatabase()  # unused
 
-groupno = DBApiAccess.get_group_number()
-s_index = groupno
-if groupno % 2 != 0:
-    s_index -= 1
-
-print(f"# Latest group number: {groupno}, rounded down to index: {s_index}")
+# groupno = DBApiAccess.get_group_number()
+# groupno = [int(s) for s in re.findall(r'\d+', str(groupno))]  # lent from articlecontroller.findgroupno
+# s_index = groupno[0]
+# if groupno[0] % 2 != 0:
+#     s_index += 1  # probably needs to be potential incrementing or w/e
+#
+# print(f"# Latest group number: {groupno}, rounded up to index: {s_index}")
 
 main = MainMenu()
-main.setup(articleList, 2)  # kun lige tal
+main.setup(articleList, 0)  # kun lige tal eller s_index

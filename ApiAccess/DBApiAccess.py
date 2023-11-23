@@ -19,11 +19,14 @@ class DBApiAccess:
 
     @staticmethod
     def get_group_number():
-        response = urllib.request.urlopen(group_number_url)
-        data = response.read()
-        response_dict = json.loads(data)
+        try:
+            response = urllib.request.urlopen(group_number_url)
+            data = response.read()
+            response_dict = json.loads(data)
 
-        return response_dict
+            return response_dict
+        except:
+            return 0
 
     def post_to_db(self, article_dict):
         url = articles_list_url
