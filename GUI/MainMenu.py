@@ -105,9 +105,7 @@ class MainMenu:
         bools, strings = self.checkTicks()
 
         # simple lack of checks in checkbox checker
-        result = self.has_consecutive_ones_or_zeros(bools)
-        if result:
-            print("NOTICE! The list has three consecutive 1s or 0s.")
+        self.has_consecutive_ones_or_zeros(bools)
 
         text = self.article_controller.merge_articles(bools, strings)
         messagebox.showinfo(title='Save status', message=text)
@@ -142,6 +140,7 @@ class MainMenu:
         joined_list = ''.join(bit_list)  # Convert the list to a single string for pattern matching
         # patterns only take half of illegal choices into account, should be extended with something like '01001'
         if '111' in joined_list or '000' in joined_list:
+            print("NOTICE! The list has three consecutive 1s or 0s.")
             print(joined_list)
             return True
         return False

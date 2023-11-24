@@ -45,10 +45,11 @@ class ArticleController:
         pass
 
     def CommentsToList(self, comments):
+        # TODO set up instead of hack in type_refactoring method
         pass
 
     def merge_articles(self, preflist, textlist):
-        # split lists for api to handle
+        # split lists for easier combination
         bool_list_left = preflist[::2]
         bool_list_right = preflist[1::2]
         text_list_left = textlist[::2]
@@ -78,7 +79,7 @@ class ArticleController:
 
         json_res1 = self.article.to_json(list_left)
         json_res2 = self.article.to_json(list_right)
-        print(f'# Article list to json: {json_res1}\n{json_res2}')
+        print(f'# Article lists to json: {json_res1}\n# {json_res2}')
 
         first_resp = self.api_access.post_to_db(json_res1)
         second_resp = self.api_access.post_to_db(json_res2)
@@ -119,7 +120,7 @@ class ArticleController:
         art_list[4] = [art_list[4]]  # art_list[4] contributor
         art_list[8] = [art_list[8]]  # art_list[8] comments
         art_list[16] = [art_list[16]]  # art_list[16] category
-        print(type(art_list[4]), type(art_list[16]))
+        print(type(art_list[4]), type(art_list[8]), type(art_list[16]))
 
         print('# Type refactored list: ' + str(art_list))
         return art_list

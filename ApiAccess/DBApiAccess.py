@@ -37,10 +37,6 @@ class DBApiAccess:
             req = urllib.request.Request(url, data=post_data, headers={'Content-Type': 'application/json'})
             response = urllib.request.urlopen(req)
 
-            data = response.read().decode('utf-8')
-            print(data)
-
             return response.status  # should always return 201 Ok
-
         except:
             return None
