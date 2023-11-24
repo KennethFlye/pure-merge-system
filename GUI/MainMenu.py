@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from Model.Article import Article
 from Controller.ArticleController import ArticleController
+from Controller.MLController import MLController
 
 
 class MainMenu:
@@ -12,9 +13,12 @@ class MainMenu:
         self.buttons_val = []
         self.labels = []
         self.article_controller = ArticleController()
+        self.ml_controller = MLController()
         self.save_status_msg = tk.StringVar()
         self.acc1 = tk.StringVar()
         self.acc2 = tk.StringVar()
+        self.title1 = tk.StringVar
+        self.title2 = ""  # TODO instantiate correctly, maybe as list?
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
         # frame = tk.Frame(parent)
@@ -78,6 +82,16 @@ class MainMenu:
 
     def create_acc_row(self, parent):
         current_row = len(parent.grid_slaves())
+
+        title1 = parent.grid_slaves(row=3, column=1)
+        title2 = parent.grid_slaves(row=3, column=4)
+        if isinstance(title1, tk.Label) and isinstance(title2, tk.Label):
+            self.title1 = title1.cget('text')
+            self.title2 = title2.cget('text')
+
+        print(f'found titles: {self.title1}, {self.title2}')
+
+        title_scores = self.ml_controller.get_accuracy_score(title1, title2)
 
         acc_label1 = tk.Label(parent, textvariable=self.acc1)
         acc_label1.grid(row=current_row, column=1, sticky='w')
