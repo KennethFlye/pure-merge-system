@@ -86,7 +86,7 @@ class ArticleController:
         if first_resp and second_resp == 201:
             success_msg = 'articles were saved'
         elif first_resp or second_resp == 500:
-            success_msg = 'internal server error'
+            success_msg = 'internal server error'  # checks for type mismatch, db throws a server error in this case
         else:
             success_msg = 'an error occurred'
 
@@ -115,7 +115,7 @@ class ArticleController:
             art_list[i] = int_val
 
         # TODO refactor this, not a good solution
-        print('# Method: type_refactoring, hardcoded: ')
+        print('# Method: type_refactoring, hardcoded put column data in a list: ')
         art_list[4] = [art_list[4]]  # art_list[4] contributor
         art_list[8] = [art_list[8]]  # art_list[8] comments
         art_list[16] = [art_list[16]]  # art_list[16] category

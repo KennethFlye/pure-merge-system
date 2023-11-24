@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from Model.Article import Article
 from Controller.ArticleController import ArticleController
 
@@ -12,6 +13,8 @@ class MainMenu:
         self.labels = []
         self.article_controller = ArticleController()
         self.save_status_msg = tk.StringVar()
+        self.acc1 = tk.StringVar()
+        self.acc2 = tk.StringVar()
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
         # frame = tk.Frame(parent)
@@ -65,13 +68,22 @@ class MainMenu:
             self.create_row(self.root, f'{variable}:', f'{getattr(article1, variable)}',
                             f'{getattr(article2, variable)}')
 
+        self.create_acc_row(self.root)
+
         self.create_merge_row(self.root)
 
-        self.root.wm_state('iconic')  # used to minimize on startup
-
-        tk.Message(self.root, textvariable=self.save_status_msg)  # TODO fix the message popup: __init__, setup, buttonAccept
+        # self.root.wm_state('iconic')  # used to minimize on startup
 
         self.root.mainloop()
+
+    def create_acc_row(self, parent):
+        current_row = len(parent.grid_slaves())
+
+        acc_label1 = tk.Label(parent, textvariable=self.acc1)
+        acc_label1.grid(row=current_row, column=1, sticky='w')
+
+        acc_label2 = tk.Label(parent, textvariable=self.acc2)
+        acc_label2.grid(row=current_row, column=4, sticky='w')
 
     def create_merge_row(self, parent):
         current_row = len(parent.grid_slaves())
@@ -98,8 +110,7 @@ class MainMenu:
             print("NOTICE! The list has three consecutive 1s or 0s.")
 
         text = self.article_controller.merge_articles(bools, strings)
-        self.save_status_msg.set(text)
-        print(text)
+        messagebox.showinfo(title='Save status', message=text)
 
     def buttonCancel(self):
         self.root.destroy()
