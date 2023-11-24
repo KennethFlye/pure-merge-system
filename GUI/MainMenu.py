@@ -1,9 +1,7 @@
 import tkinter as tk
+from tkinter import messagebox
 from Model.Article import Article
 from Controller.ArticleController import ArticleController
-from GUI.MainMenuFunc import MenuFunc
-import pandas as pd
-import math  # TODO cannot do nan at this level
 
 
 class MainMenu:
@@ -13,6 +11,10 @@ class MainMenu:
         self.root.title("Pure Merge")
         self.buttons_val = []
         self.labels = []
+        self.article_controller = ArticleController()
+        self.save_status_msg = tk.StringVar()
+        self.acc1 = tk.StringVar()
+        self.acc2 = tk.StringVar()
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
         # frame = tk.Frame(parent)
@@ -53,24 +55,35 @@ class MainMenu:
 
         self.buttons_val.append(isPressed2)
 
-    def setup(self, articleList):
+    def setup(self, articleList, starting_index):
         articleVariables = articleList[0].getListOfVariables()  # index number does not matter?
         print(articleVariables)
 
-        for i in range(13):
-            counter = i * 2
-            article1 = articleList[counter]  # first field values
-            article2 = articleList[counter + 1]  # second field values
+        for i in range(len(articleVariables)):
+            article1 = articleList[starting_index]  # first row values
+            article2 = articleList[starting_index + 1]  # second row values
             variable = articleVariables[i]  # field value types
-            # print(variable)
+
+            # create the grid row with column name and row values according to the column name
             self.create_row(self.root, f'{variable}:', f'{getattr(article1, variable)}',
                             f'{getattr(article2, variable)}')
+
+        self.create_acc_row(self.root)
 
         self.create_merge_row(self.root)
 
         # self.root.wm_state('iconic')  # used to minimize on startup
 
         self.root.mainloop()
+
+    def create_acc_row(self, parent):
+        current_row = len(parent.grid_slaves())
+
+        acc_label1 = tk.Label(parent, textvariable=self.acc1)
+        acc_label1.grid(row=current_row, column=1, sticky='w')
+
+        acc_label2 = tk.Label(parent, textvariable=self.acc2)
+        acc_label2.grid(row=current_row, column=4, sticky='w')
 
     def create_merge_row(self, parent):
         current_row = len(parent.grid_slaves())
@@ -91,30 +104,19 @@ class MainMenu:
     def buttonAccept(self):
         bools, strings = self.checkTicks()
 
-        # FOR CHECKING ITERABLE
-        # for item in bools:
-        #     print(f"{item}: {self.isIterable(item)}")
+        # simple lack of checks in checkbox checker
+        self.has_consecutive_ones_or_zeros(bools)
 
-        # simple checkbox lacking checks checker
-        result = self.has_consecutive_ones_or_zeros(bools)
-        if result:
-            print("NOTICE! The list has three consecutive 1s or 0s.")
-
-        # OLD - moved to articlecontroller
-        # itererer gennem hver string i strings, comparer hver index i bools og strings, if nummer = 1: incl string
-        # merged_article = [string for string, number in zip(strings, bools) if number == '1']
-        # print(merged_article)  # returns empty list because authors is a list maybe
-
-        ArticleController.MergedArticles(self, bools, strings)
+        text = self.article_controller.merge_articles(bools, strings)
+        messagebox.showinfo(title='Save status', message=text)
 
     def buttonCancel(self):
         self.root.destroy()
-        MenuFunc.cancel_merge(self)
 
     def checkTicks(self):
         bin_val_list = []
         text_list = []
-        text_types_list = Article.getListOfVariables(self)
+        text_types_list = Article.getListOfVariables()
         for widget in reversed(self.root.grid_slaves()):
             if isinstance(widget, tk.Checkbutton):
                 variable = widget.cget('variable')
@@ -123,20 +125,22 @@ class MainMenu:
             elif isinstance(widget, tk.Label):
                 # could add check to see if text = column name and then get rid of it
                 text = widget.cget('text')
-                # Add check to prevent collection text_types TODO improve
+                # Add check to prevent collection text_types
                 if text[:-1] not in text_types_list:
                     text_list.append(text)
 
         # visual confirmation
-        print(bin_val_list)
-        print(text_list)
-        print(str(len(bin_val_list)) + ' = bool | string = ' + str(len(text_list)))
+        print('# Bool list: ' + str(bin_val_list))
+        print('# Text list: ' + str(text_list))
+        print(f'# Length of lists: bool = {str(len(bin_val_list))}, string = {str(len(text_list))}')
 
         return bin_val_list, text_list
 
-    def has_consecutive_ones_or_zeros(self, list):
-        joined_list = ''.join(list)  # Convert the list to a single string for pattern matching
+    def has_consecutive_ones_or_zeros(self, bit_list):
+        joined_list = ''.join(bit_list)  # Convert the list to a single string for pattern matching
+        # patterns only take half of illegal choices into account, should be extended with something like '01001'
         if '111' in joined_list or '000' in joined_list:
+            print("NOTICE! The list has three consecutive 1s or 0s.")
             print(joined_list)
             return True
         return False

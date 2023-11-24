@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="end of day - able to merge article">
+    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="save status messagebox is set up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiAccess/DBApiAccess.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApiAccess/DBApiAccess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/ArticleController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ArticleController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/MainMenu.py" afterDir="false" />
     </list>
@@ -22,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -48,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature__gui-func&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;post__merge__to__db&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/mille/PycharmProjects/mergePure&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -120,6 +126,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.MainMenuFunc" />
+        <item itemvalue="Python.MainMenuFunc" />
+        <item itemvalue="Python.MainMenuFunc" />
+        <item itemvalue="Python.MainMenuFunc" />
       </list>
     </recent_temporary>
   </component>
@@ -138,6 +147,18 @@
       <workItem from="1699361767598" duration="49000" />
       <workItem from="1699431772706" duration="15822000" />
       <workItem from="1699517693303" duration="7776000" />
+      <workItem from="1699532817934" duration="78000" />
+      <workItem from="1699863148808" duration="1130000" />
+      <workItem from="1700127352698" duration="10817000" />
+      <workItem from="1700209456589" duration="1138000" />
+      <workItem from="1700210799455" duration="799000" />
+      <workItem from="1700211712764" duration="5844000" />
+      <workItem from="1700466011389" duration="4308000" />
+      <workItem from="1700554869337" duration="15263000" />
+      <workItem from="1700641182722" duration="2897000" />
+      <workItem from="1700727786368" duration="190000" />
+      <workItem from="1700743275573" duration="2558000" />
+      <workItem from="1700815388817" duration="3330000" />
     </task>
     <task id="LOCAL-00001" summary="setup">
       <option name="closed" value="true" />
@@ -235,7 +256,87 @@
       <option name="project" value="LOCAL" />
       <updated>1699447836785</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="restored files and calls, throws error still">
+      <option name="closed" value="true" />
+      <created>1699530390414</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699530390414</updated>
+    </task>
+    <task id="LOCAL-00014" summary="filename change, added extra api file">
+      <option name="closed" value="true" />
+      <created>1699532648284</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699532648284</updated>
+    </task>
+    <task id="LOCAL-00015" summary="print upd">
+      <option name="closed" value="true" />
+      <created>1699863635498</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699863635499</updated>
+    </task>
+    <task id="LOCAL-00016" summary="start of connecting to api, switching to branch">
+      <option name="closed" value="true" />
+      <created>1700133416067</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700133416067</updated>
+    </task>
+    <task id="LOCAL-00017" summary="some changed formatting of the lists, appended grp number">
+      <option name="closed" value="true" />
+      <created>1700137792201</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700137792202</updated>
+    </task>
+    <task id="LOCAL-00018" summary="eod - error in getting column name from csv file">
+      <option name="closed" value="true" />
+      <created>1700138856622</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1700138856623</updated>
+    </task>
+    <task id="LOCAL-00019" summary="eod - more work on post to db, now saving one article before throwing error">
+      <option name="closed" value="true" />
+      <created>1700571653478</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1700571653478</updated>
+    </task>
+    <task id="LOCAL-00020" summary="some save status stuff, shown article fix">
+      <option name="closed" value="true" />
+      <created>1700727883740</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700727883740</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added func to handle empty group_number calls, used for automatic showing of next article">
+      <option name="closed" value="true" />
+      <created>1700745336334</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1700745336334</updated>
+    </task>
+    <task id="LOCAL-00022" summary="save status messagebox is set up">
+      <option name="closed" value="true" />
+      <created>1700817960035</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1700817960035</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,10 +353,21 @@
     <MESSAGE value="ENDELIG" />
     <MESSAGE value="authors parsed slettet" />
     <MESSAGE value="end of day - able to merge article" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of day - able to merge article" />
+    <MESSAGE value="restored files and calls, throws error still" />
+    <MESSAGE value="filename change, added extra api file" />
+    <MESSAGE value="print upd" />
+    <MESSAGE value="start of connecting to api, switching to branch" />
+    <MESSAGE value="some changed formatting of the lists, appended grp number" />
+    <MESSAGE value="eod - error in getting column name from csv file" />
+    <MESSAGE value="eod - more work on post to db, now saving one article before throwing error" />
+    <MESSAGE value="some save status stuff, shown article fix" />
+    <MESSAGE value="added func to handle empty group_number calls, used for automatic showing of next article" />
+    <MESSAGE value="save status messagebox is set up" />
+    <option name="LAST_COMMIT_MESSAGE" value="save status messagebox is set up" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1699525414568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pure_merge_system$ApiAccess.coverage" NAME="ApiAccess Coverage Results" MODIFIED="1699529107416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ApiAccess" />
+    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1700818375879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mergePure$main.coverage" NAME="main Coverage Results" MODIFIED="1696936292085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pure_merge_system$MainMenuFunc.coverage" NAME="MainMenuFunc Coverage Results" MODIFIED="1699438463810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
   </component>
