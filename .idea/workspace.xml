@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="save status messagebox is set up">
-      <change afterPath="$PROJECT_DIR$/Controller/MLController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mergePure.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mergePure.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8c59c1c7-e5ce-42f8-9d95-b2547f8c49e3" name="Changes" comment="method setup for accuracy returns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApiAccess/MLApiAccess.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApiAccess/MLApiAccess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/MLController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/MLController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/MainMenu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,27 +49,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "get__accuracy__score",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/mille/PycharmProjects/mergePure",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;get__accuracy__score&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mille/PycharmProjects/mergePure&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mille\PycharmProjects\mergePure\Data" />
@@ -161,6 +159,7 @@
       <workItem from="1700727786368" duration="190000" />
       <workItem from="1700743275573" duration="2558000" />
       <workItem from="1700815388817" duration="3330000" />
+      <workItem from="1701077718159" duration="5340000" />
     </task>
     <task id="LOCAL-00001" summary="setup">
       <option name="closed" value="true" />
@@ -338,7 +337,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700817960035</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="method setup for accuracy returns">
+      <option name="closed" value="true" />
+      <created>1700822697991</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1700822697991</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,11 +372,23 @@
     <MESSAGE value="some save status stuff, shown article fix" />
     <MESSAGE value="added func to handle empty group_number calls, used for automatic showing of next article" />
     <MESSAGE value="save status messagebox is set up" />
-    <option name="LAST_COMMIT_MESSAGE" value="save status messagebox is set up" />
+    <MESSAGE value="method setup for accuracy returns" />
+    <option name="LAST_COMMIT_MESSAGE" value="method setup for accuracy returns" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ApiAccess/MLApiAccess.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pure_merge_system$ApiAccess.coverage" NAME="ApiAccess Coverage Results" MODIFIED="1699529107416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ApiAccess" />
-    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1700822583154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pure_merge_system$main.coverage" NAME="main Coverage Results" MODIFIED="1701084177173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mergePure$main.coverage" NAME="main Coverage Results" MODIFIED="1696936292085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pure_merge_system$MainMenuFunc.coverage" NAME="MainMenuFunc Coverage Results" MODIFIED="1699438463810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
   </component>

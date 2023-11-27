@@ -17,8 +17,7 @@ class MainMenu:
         self.save_status_msg = tk.StringVar()
         self.acc1 = tk.StringVar()
         self.acc2 = tk.StringVar()
-        self.title1 = tk.StringVar
-        self.title2 = ""  # TODO instantiate correctly, maybe as list?
+        self.title_eval_list = []
 
     def create_row(self, parent, label_text_type, label_text, label2_text):
         # frame = tk.Frame(parent)
@@ -83,21 +82,23 @@ class MainMenu:
     def create_acc_row(self, parent):
         current_row = len(parent.grid_slaves())
 
-        title1 = parent.grid_slaves(row=3, column=1)
-        title2 = parent.grid_slaves(row=3, column=4)
-        if isinstance(title1, tk.Label) and isinstance(title2, tk.Label):
-            self.title1 = title1.cget('text')
-            self.title2 = title2.cget('text')
+        self.title_eval_list.append(parent.grid_slaves(row=15, column=1))  # notice each row in gui ascends with 5
+        self.title_eval_list.append(parent.grid_slaves(row=15, column=4))
 
-        print(f'found titles: {self.title1}, {self.title2}')
+        title1 = self.title_eval_list[0][0].cget('text')  # title_eval_list holds widgets which are in turn lists
+        title2 = self.title_eval_list[1][0].cget('text')
+        print(f'# Comparing titles: [{title1}] and [{title2}]')
 
         title_scores = self.ml_controller.get_accuracy_score(title1, title2)
+        print(title_scores)
 
         acc_label1 = tk.Label(parent, textvariable=self.acc1)
         acc_label1.grid(row=current_row, column=1, sticky='w')
 
         acc_label2 = tk.Label(parent, textvariable=self.acc2)
         acc_label2.grid(row=current_row, column=4, sticky='w')
+
+        print('method finished')
 
     def create_merge_row(self, parent):
         current_row = len(parent.grid_slaves())
@@ -107,13 +108,6 @@ class MainMenu:
 
         buttonCancel = tk.Button(parent, text='Cancel Merge', bg='red', command=self.buttonCancel)
         buttonCancel.grid(row=current_row, column=1, sticky='w')
-
-    def isIterable(self, item):
-        try:
-            iter(item)
-            return True
-        except TypeError:
-            return False
 
     def buttonAccept(self):
         bools, strings = self.checkTicks()

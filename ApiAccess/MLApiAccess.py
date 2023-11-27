@@ -1,9 +1,9 @@
 import json
 import urllib.request
 
-status_url_ml = "http://127.0.0.1:5000/api/status"
-evaluate_url_ml = "http://127.0.0.1:5000/api/check"
-compare_titles_ml = "http://127.0.0.1:5000/api/predict/compare"
+status_url_ml = "http://127.0.0.1:8001/api/status"
+evaluate_url_ml = "http://127.0.0.1:8001/api/check"
+compare_titles_ml = "http://127.0.0.1:8001/api/predict/compare"
 
 
 class MLApiAccess:
@@ -42,3 +42,4 @@ class MLApiAccess:
         response_dict = json.loads(data)
 
         print(response_dict)
+        return response_dict
