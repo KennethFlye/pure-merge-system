@@ -60,7 +60,7 @@ class MainMenu:
 
     def setup(self, articleList, starting_index):
         articleVariables = articleList[0].getListOfVariables()  # index number does not matter?
-        print(articleVariables)
+        print(f'# Article variables: {articleVariables}')
 
         for i in range(len(articleVariables)):
             article1 = articleList[starting_index]  # first row values
@@ -90,7 +90,10 @@ class MainMenu:
         print(f'# Comparing titles: [{title1}] and [{title2}]')
 
         title_scores = self.ml_controller.get_accuracy_score(title1, title2)
-        print(title_scores)
+        print(f'# Titles scored: {title_scores}')
+
+        acc_label0 = tk.Label(parent, text='title accuracy scores:')
+        acc_label0.grid(row=current_row, column=0, sticky='w')
 
         acc_label1 = tk.Label(parent, textvariable=self.acc1)
         acc_label1.grid(row=current_row, column=1, sticky='w')
@@ -98,7 +101,8 @@ class MainMenu:
         acc_label2 = tk.Label(parent, textvariable=self.acc2)
         acc_label2.grid(row=current_row, column=4, sticky='w')
 
-        print('method finished')
+        self.acc1.set(title_scores[0])
+        self.acc2.set(title_scores[1])
 
     def create_merge_row(self, parent):
         current_row = len(parent.grid_slaves())

@@ -41,5 +41,4 @@ class MLApiAccess:
         data = response.read().decode('utf-8')
         response_dict = json.loads(data)
 
-        print(response_dict)
         return response_dict
