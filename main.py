@@ -31,4 +31,4 @@ articleList = art_controller.addArticles(filePath)
 # print(f"# Latest group number: {groupno}, rounded up to index: {s_index}")
 
 main = MainMenu()
-main.setup(articleList, 0)  # kun lige tal eller s_index
+main.setup(articleList, 2)  # kun lige tal eller s_index
